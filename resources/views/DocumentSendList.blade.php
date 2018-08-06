@@ -88,11 +88,10 @@
                         button_code = '<div class="btn-group" role="group">';
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
-                        button_code += '    <li><a href="<?php echo url('/document/send/detail'); ?>">Detail_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/send/update'); ?>">Update_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/send/delete'); ?>">Delete_' + data + '</a></li>';
-                        button_code += '   </ul>';
-                        button_code += '</div>';
+                        button_code += '    <li><a href="<?php echo url('/document/send/detail?id=')?>' + data + '">Detail</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/document/send/update?id=')?>' + data + '">Update</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/document/send/delete?id=')?>' + data + '">Delete</a></li>';
+                        button_code += '</ul></div>';
                         return button_code;
                     },
                     "className": "text-center",

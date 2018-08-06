@@ -128,9 +128,15 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        'ACCOUNT MANAGER',
         [
-            'text'        => 'User Management',
+            'text'        => 'User Manager',
             'url'         => 'user',
+            'icon'        => 'user',
+        ],
+        [
+            'text'        => 'Client Manager',
+            'url'         => 'client',
             'icon'        => 'user',
         ],
         'ACCOUNT SETTINGS',

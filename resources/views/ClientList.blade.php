@@ -1,17 +1,15 @@
-
-    
 @extends('adminlte::page')
 
-@section('title', 'User Manager')
+@section('title', 'Client Manager')
 
 @section('content_header')
-    <h1>User Manager</h1>
+    <h1>Client Manager</h1>
 @stop
 
 @section('content')
 	<div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Daftar User</h3>
+            <h3 class="box-title">Daftar Client</h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -22,12 +20,13 @@
         <div class="box-body">
             <!-- /.box-header -->
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0" id="t_doc_receive">
+                <table class="table table-bordered" width="100%" cellspacing="0" id="t_clients">
                     <thead id="th_item">
                         <th>UID#</th>
                         <th>Nama User</th>
                         <th>E-Mail</th>
-                        <th>Hak Akses</th>
+                        <th>Alamat</th>
+                        <th>Telp.</th>
                         <th class="text-center">Action</th>
                     </thead>
                 </table>
@@ -45,17 +44,18 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#t_doc_receive').DataTable({
+        $('#t_clients').DataTable({
             "processing": false,
             "serverSide": false,
             "ajax": {
-                "url": "{{ url('/user/list') }}"
+                "url": "{{ url('/client/list') }}"
             },
             "columns": [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
-                { data: 'role', name: 'role' },
+                { data: 'address', name: 'address' },
+                { data: 'phone', name: 'phone' },
                 { data: 'id', name: 'id' }
             ],
             "columnDefs": [ 
@@ -74,7 +74,7 @@
                         return button_code;
                     },
                     "className": "text-center",
-                    "targets": 4
+                    "targets": 5
                 }
             ]
 
