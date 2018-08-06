@@ -115,7 +115,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Dokumen Kirim',
+            'text'        => 'Kirim Dokumen',
             'url'         => 'document/send',
             'icon'        => 'file',
             'label'       => 4,
@@ -127,6 +127,11 @@ return [
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
+        ],
+        [
+            'text'        => 'User Management',
+            'url'         => 'user',
+            'icon'        => 'user',
         ],
         'ACCOUNT SETTINGS',
         [

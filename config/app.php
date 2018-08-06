@@ -160,6 +160,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Yajrabox Datatable
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
     /*
@@ -209,6 +212,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Yajrabox Datatable
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];

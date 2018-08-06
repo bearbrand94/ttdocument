@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('document/send', 'DocumentSendController@index');
+Route::get('document/send/list', 'DocumentSendController@get_list');
+
+Route::get('document/receive', 'DocumentReceiveController@index');
+Route::get('document/receive/list', 'DocumentReceiveController@get_list');
+
+Route::get('user', 'UserController@index');
+Route::get('user/list', 'UserController@get_list');
