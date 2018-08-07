@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Bukti Pengiriman')
+@section('title', 'Bukti Tanda Terima')
 
 
 @section('content')
@@ -21,18 +21,25 @@
     <!-- info row -->
     <div class="row invoice-info">
       <div class="col-xs-12">
-        <h4><strong>BUKTI PENGIRIMAN</strong></h4>
+        <h4><strong>BUKTI TANDA TERIMA</strong></h4>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-4">
         <address>
-          <strong>Kepada Yth, {{$header->send_to}}</strong><br>
-          {{$header->send_to_address}}<br>
-          Phone: {{$header->send_to_phone}}<br>
-          Email: {{$header->send_to_email}}
+          <strong>Diterima Dari, {{$header->client_name}}</strong><br>
+          {{$header->client_address}}<br>
+          Phone: {{$header->client_phone}}<br>
+          Email: {{$header->client_email}}
         </address>
       </div>
       <!-- /.col -->
-      <div class="col-xs-6 text-right">
+      <div class="col-xs-4">
+        <address>
+          <strong>Ditujukan Kepada, {{$header->r2_name}}</strong><br>
+          Selaku Staff H.R. Consulting, <br>Ditempat.<br>
+        </address>
+      </div>
+      <!-- /.col -->
+      <div class="col-xs-4 text-right">
         No. Surat: <b>{{$header->letter_number}}</b><br>
         <b>Surabaya, {{date('d M Y', strtotime($header->created_at))}}</b>
         <br>
@@ -42,7 +49,7 @@
     <!-- /.row -->
 
     <!-- Table row -->
-    Dengan ini,<br> Kami telah mengirimkan dokumen kepada <b>{{$header->send_to}}</b> ditempat, dengan rincian sebagai berikut:
+    <br>Dengan ini menyatakan,<br>Bahwa saya sebagai receptionist, telah menerima dokumen dari klien <b>{{$header->client_name}}</b> dengan rincian sebagai berikut:
     <div class="row">
       <div class="col-xs-12 table-responsive">
         <table class="table table-striped">
@@ -70,22 +77,14 @@
 
     <!-- Signatures row -->
     <div class="row">
-      <div class="col-xs-4 text-center">
-        Pengirim,
-        <br><br><br><br><b>{{$header->requested_by}}
-        </b>
-        <br>Staff H.R. Consulting
+      <div class="col-xs-6 text-center">
+        Penerima I
+        <br><br><br><br><b>{{$header->r1_name}}</b>
       </div>
-      <div class="col-xs-4 text-center">
-        Diserahkan,
-        <br><br><br><br><b>{{$header->submitted_to}}
-        </b>
-        <br>Receptionist H.R. Consulting
-      </div>
-      <div class="col-xs-4 text-center">
-        Diterima,
-        <br><br><br><br><b>{{$header->send_to}}
-        </b>
+      <div class="col-xs-6 text-center">
+        
+        Penerima II
+        <br><br><br><br><b>{{$header->r2_name}}</b>
       </div>
     </div>
 

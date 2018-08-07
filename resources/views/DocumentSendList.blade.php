@@ -36,7 +36,7 @@
         <!-- /.box-body -->
         
         <div class="box-footer">
-            <button type="button" class="btn btn-primary pull-right btn-flat btn-sm">Buat Pengajuan Baru</button>
+            <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" href="{{ url('/document/send/new') }}">Buat Pengajuan Baru</a>
         </div>
         <!-- /.box-footer -->
     </div>

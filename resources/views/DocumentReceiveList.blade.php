@@ -11,7 +11,7 @@
 @section('content')
 	<div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Daftar Penerimaan Dokumen</h3>
+            <h3 class="box-title">Daftar Surat Tanda Terima Dokumen</h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -93,9 +93,9 @@
                         button_code = '<div class="btn-group" role="group">';
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/detail'); ?>">Detail_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/update'); ?>">Update_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/delete'); ?>">Delete_' + data + '</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/document/receive/detail?id=')?>' + data + '">Detail</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/document/receive/detail?id=')?>' + data + '">Detail</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/document/receive/detail?id=')?>' + data + '">Detail</a></li>';
                         button_code += '   </ul>';
                         button_code += '</div>';
                         return button_code;

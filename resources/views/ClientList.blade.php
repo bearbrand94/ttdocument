@@ -35,7 +35,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            <button type="button" class="btn btn-primary pull-right btn-flat btn-sm">Add New User</button>
+            <button type="button" class="btn btn-primary pull-right btn-flat btn-sm">Add New Client</button>
         </div>
         <!-- /.box-footer -->
 	</div>

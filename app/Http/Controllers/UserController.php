@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use DB;
+use App\User;
 
 class UserController extends Controller
 {
@@ -14,9 +15,7 @@ class UserController extends Controller
     }
 
     public function get_list(){
-        $user_data = DB::table('users')
-		->join('roles', 'roles.id', '=', 'users.role_id')
-		->select('users.id', 'users.name', 'users.email', 'roles.name as role');
+        $user_data = User::get_user_data();
         return Datatables::of($user_data)->make(true);
     }
 }
