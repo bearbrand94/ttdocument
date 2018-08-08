@@ -97,7 +97,8 @@
                     "className": "text-center",
                     "targets": 7
                 }
-            ]
+            ],
+            "order": [ 0, 'desc' ]
         });
     } );    
 </script>

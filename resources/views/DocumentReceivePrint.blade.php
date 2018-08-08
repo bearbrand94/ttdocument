@@ -49,7 +49,7 @@
     <!-- /.row -->
 
     <!-- Table row -->
-    <br>Dengan ini menyatakan,<br>Bahwa saya sebagai receptionist, telah menerima dokumen dari klien <b>{{$header->client_name}}</b> dengan rincian sebagai berikut:
+    <br>Dengan ini menyatakan,<br>Bahwa saya <b>{{$header->r1_name}}</b> selaku Receptionist H.R. Consulting, telah menerima dokumen dari klien <b>{{$header->client_name}}</b> dengan rincian sebagai berikut:
     <div class="row">
       <div class="col-xs-12 table-responsive">
         <table class="table table-striped">

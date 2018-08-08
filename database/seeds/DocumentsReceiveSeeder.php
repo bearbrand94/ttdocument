@@ -23,7 +23,7 @@ class DocumentsReceiveSeeder extends Seeder
             	'client' => $faker->numberBetween(1,30),
                 'receiver1' => $faker->numberBetween(7,10),
                 'receiver2' => $faker->numberBetween(4,6),
-                'letter_number' => $faker->isbn10,
+                'letter_number' => Document_Receive::get_letter_number(),
                 'review_status' => $faker->numberBetween(0,2),
                 'note' => $faker->catchPhrase,
             ]);

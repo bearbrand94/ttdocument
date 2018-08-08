@@ -23,7 +23,7 @@
                 <table class="table table-bordered" width="100%" cellspacing="0" id="t_clients">
                     <thead id="th_item">
                         <th>UID#</th>
-                        <th>Nama User</th>
+                        <th>Nama</th>
                         <th>E-Mail</th>
                         <th>Alamat</th>
                         <th>Telp.</th>
@@ -35,7 +35,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            <button type="button" class="btn btn-primary pull-right btn-flat btn-sm">Add New Client</button>
+            <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" href="{{ url('/client/new') }}">Add New Client</a>
         </div>
         <!-- /.box-footer -->
 	</div>
@@ -66,9 +66,9 @@
                         button_code = '<div class="btn-group" role="group">';
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/detail'); ?>">Detail_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/update'); ?>">Update_' + data + '</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/receive/delete'); ?>">Delete_' + data + '</a></li>';
+                        // button_code += '    <li><a href="<?php echo url('/client/detail?id=')?>' + data + '">Detail</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/client/update?id=')?>' + data + '">Update</a></li>';
+                        // button_code += '    <li><a href="<?php echo url('/client/delete?id=')?>' + data + '">Delete</a></li>';
                         button_code += '   </ul>';
                         button_code += '</div>';
                         return button_code;
@@ -76,8 +76,8 @@
                     "className": "text-center",
                     "targets": 5
                 }
-            ]
-
+            ],
+            "order": [0,"desc"] 
         });
         // $('#t_doc_receive_filter input').unbind();
         // $('#t_doc_receive_filter input').bind('keyup', function(e) {

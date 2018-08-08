@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Document_Receive_Detail;
+use App\Document_Send_Detail;
 
-class DocumentsReceiveDetailSeeder extends Seeder
+class DocumentsSendDetailSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,16 +12,15 @@ class DocumentsReceiveDetailSeeder extends Seeder
      */
     public function run()
     {
-        // Let's clear the users table first
-        Document_Receive_Detail::truncate();
+        Document_Send_Detail::truncate();
 
         $faker = \Faker\Factory::create();
 
         // And now let's generate a few dozen users for our app:
         for ($i = 1; $i <= 30; $i++) {
         	for ($j = 0; $j < $faker->numberBetween(1,10); $j++) {
-	            Document_Receive_Detail::create([
-	            	'document_receive_id' => $i,
+	            Document_Send_Detail::create([
+	            	'document_send_id' => $i,
 	                'description' => $faker->text,
 	            ]);
         	}

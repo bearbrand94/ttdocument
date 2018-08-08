@@ -31,10 +31,16 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('document/receive/list', 'DocumentReceiveController@get_list');
 	Route::get('document/receive/detail', 'DocumentReceiveController@get_detail');
 	Route::get('document/receive/print', 'DocumentReceiveController@print_detail');
-
+	Route::get('document/receive/new', 'DocumentReceiveController@new_form');
+	Route::post('document/receive/insert', 'DocumentReceiveController@store');
+	
 	Route::get('user', 'UserController@index');
 	Route::get('user/list', 'UserController@get_list');
 
 	Route::get('client', 'ClientController@index');
 	Route::get('client/list', 'ClientController@get_list');
+	Route::get('client/new', 'ClientController@new_form');
+	Route::post('client/insert', 'ClientController@store');
+	Route::get('client/update', 'ClientController@update_form');
+	Route::post('client/update', 'ClientController@update');
 });

@@ -19,7 +19,7 @@ class Document_Send extends Model
             FROM documents_send
             WHERE substr(created_at,1,7)=:date_now
         "), array(
-           'date_now' => "2018-07",
+           'date_now' => date("Y-m"),
         ));
         $no_surat = $results[0]->no_urut."/SEND/".date("m/Y");
         return $no_surat;

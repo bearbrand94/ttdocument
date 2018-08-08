@@ -23,9 +23,9 @@
         <div class="box-body">
             <span>Pengajuan No. <strong>{{$header->letter_number}}</strong></span>
             <span>, dibuat pada tanggal {{date('d M Y, H:i', strtotime($header->created_at))}}</span><br>
-            <span>Diajukan Oleh <strong>{{$header->requested_by}}</strong></span><br>
-            <span>Dikirim kepada <strong>{{$header->send_to}}</strong></span><br>
-            <span>Diajukan Kepada <strong>{{$header->submitted_to}}</strong></span><br>
+            <span>Diajukan Oleh Staff: <strong>{{$header->requested_by}}</strong></span><br>
+            <span>Dikirim kepada Client: <strong>{{$header->send_to}}</strong></span><br>
+            <span>Diserahkan Kepada Receptionist: <strong>{{$header->submitted_to}}</strong></span><br>
 
         </div>
         <!-- /.box-body -->

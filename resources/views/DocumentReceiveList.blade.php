@@ -39,7 +39,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            <button type="button" class="btn btn-primary pull-right btn-flat btn-sm">Terima Dokumen Baru</button>
+            <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" href="{{ url('/document/receive/new') }}">Terima Dokumen Baru</a>
         </div>
         <!-- /.box-footer -->
 	</div>
@@ -103,8 +103,8 @@
                     "className": "text-center",
                     "targets": 7
                 }
-            ]
-
+            ],
+            "order": [ 0, 'desc' ]
         });
         // $('#t_doc_receive_filter input').unbind();
         // $('#t_doc_receive_filter input').bind('keyup', function(e) {

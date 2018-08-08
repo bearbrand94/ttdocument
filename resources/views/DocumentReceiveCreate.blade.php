@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Pengajuan Kirim Baru')
+@section('title', 'Terima Dokumen Baru')
 
 @section('content_header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <h1>Form Pengajuan Kirim Dokumen</h1>
+    <h1>Form Terima Dokumen Baru</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
 <div class="col-md-12">
     <div class="box box-primary">
         <div class="box-header with-border">
-          <strong>Header Pengajuan</strong>
+          <strong>Header Dokumen</strong>
           <div class="box-tools">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -25,7 +25,7 @@
             <!-- form start -->
             <form role="form">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Ditujukan Kepada Client:</label>
+                  <label for="exampleInputEmail1">Diterima Dari Client:</label>
                   <select class="form-control" id="select_client">
                     @foreach($clients as $client)
                         <option value="{{$client->id}}">{{$client->name}}</option>
@@ -34,8 +34,8 @@
                   <!-- <p class="help-block">Example block-level help text here.</p> -->
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Diserahkan Kepada Receptionist:</label>
-                  <select class="form-control" id="select_user">
+                  <label for="exampleInputEmail1">Diserahkan Kepada Staff:</label>
+                  <select class="form-control" id="select_staff">
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
@@ -50,7 +50,7 @@
 
     <div class="box box-success">
         <div class="box-header with-border">
-          <strong>Detail Pengajuan</strong>
+          <strong>Detail Dokumen</strong>
           <div class="box-tools">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -70,7 +70,7 @@
                 </thead>
                 <tbody id="tb_detail_document">
                     <tr>
-                        <td colspan="3">Belum Terdapat Detail Pengajuan, Tambahkan Detail Baru..</td>
+                        <td colspan="3">Belum Terdapat Detail Dokumen Yang Diterima, Tambahkan Detail Baru..</td>
                     </tr>
                 </tbody>
             </table>
@@ -157,7 +157,7 @@
         <h4 class="modal-title">Konfirmasi</h4>
       </div>
       <div class="modal-body">
-        <p id="validation_error_message">Pastikan data yang telah diisi telah benar sebelum permohonan dikirim kepada supervisor.</p>
+        <p id="validation_error_message">Pastikan data yang telah diisi telah benar sebelum permohonan dikirim kepada staff.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-sm btn-flat" data-dismiss="modal">Batal</button>
@@ -201,19 +201,17 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               }
             });
-            $.post( "{{ url('/document/send/insert') }}", 
+            $.post( "{{ url('/document/receive/insert') }}", 
             {
                 client_id: $("#select_client").val(),
-                user_id: $("#select_user").val(),
+                staff_id: $("#select_staff").val(),
                 document: JSON.stringify(arrDocument)
             },
             function(data, status){
                 alert(data.payload);    
-                // console.log(data);
-                window.location.replace("{{ url('/document/send') }}");
+                window.location.replace("{{ url('/document/receive') }}");
             });         
         }
-
     }
 
     function validate_input(){
@@ -222,7 +220,7 @@
         var message="Gagal membuat Pengajuan Kirim Dokumen karena terdapat beberapa kesalahan sebagai berikut:<br>";
         if(arrDocument.length <= 0){
             flag_error=1;
-            message += "<b>Detail Pengajuan Harus Ada Minimal 1.</b><br>"
+            message += "<b>Detail Dokumen Yang Diterima Harus Ada Minimal 1.</b><br>"
         }
 
         if(flag_error==0){

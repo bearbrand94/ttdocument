@@ -18,7 +18,7 @@ class Document_Receive extends Model
         $results = DB::select( DB::raw("
             SELECT count(*)+1 as no_urut
             FROM documents_receive
-            WHERE substr(created_at,1,7)=':date_now'
+            WHERE substr(created_at,1,7)=:date_now
         "), array(
            'date_now' => date("Y-m"),
         ));
