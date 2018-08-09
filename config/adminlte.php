@@ -110,9 +110,9 @@ return [
     'menu' => [
         'MAIN FUNCTION',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Dashboard',
+            'icon'        => 'dashboard',
+            'url'         => 'home',
         ],
         [
             'text'        => 'Kirim Dokumen',
@@ -120,6 +120,7 @@ return [
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
+            'can'  => 'manage-document-send',
         ],
         [
             'text'        => 'Terima Dokumen',
@@ -127,17 +128,20 @@ return [
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
+            'can'  => 'manage-document-receive',
         ],
         'ACCOUNT MANAGER',
         [
             'text'        => 'User Manager',
             'url'         => 'user',
             'icon'        => 'user',
+            'can'  => 'manage-user',
         ],
         [
             'text'        => 'Client Manager',
             'url'         => 'client',
             'icon'        => 'user',
+            'can'  => 'manage-client',
         ],
         'ACCOUNT SETTINGS',
         [

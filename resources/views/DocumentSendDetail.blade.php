@@ -3,6 +3,7 @@
 @section('title', 'Detail Kirim Dokumen')
 
 @section('content_header')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <h1>Data Dokumen</h1>
 @stop
 
@@ -31,7 +32,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            <span class="pull-right">Status: 
+            <span class="pull-left">Status: 
                 @if ($header->approval_status == 0)
                     <span class="label label-primary">Menunggu Konfirmasi Supervisor</span>
                 @elseif ($header->approval_status == 1)
@@ -40,6 +41,11 @@
                     <span class="label label-danger">Ditolak Oleh Supervisor</span>
                 @endif
             </span><br>
+            @if ($header->note != "")
+              <p class="">
+                Catatan: <b>{{$header->note}}</b>
+              </p>
+            @endif
         </div>
         <!-- /.box-footer -->
     </div>
@@ -70,15 +76,6 @@
                   <tr>
                     <td>{{$detail_data->id}}</td>
                     <td>{{$detail_data->description}}</td>
-<!--                     <td>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a onclick="ubah({{$detail_data->id}})">Ubah</a></li>
-                                <li><a onclick="hapus({{$detail_data->id}})">Hapus</a></li>
-                            </ul>
-                        </div>
-                    </td> -->
                   </tr>
                   @endforeach
                 </tbody>
@@ -101,34 +98,105 @@
         <!-- /.box-header -->
 
         <div class="box-body">
-            <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" style="margin-right: 5px;" href="<?php echo url('/document/send/print') ?>?id={{$header->id}}">Print</a>
-            <button type="button" class="btn btn-success pull-right btn-flat btn-sm" style="margin-right: 5px;">Terima</button>
-            <button type="button" class="btn btn-danger pull-right btn-flat btn-sm" style="margin-right: 5px;">Tolak</button>
+            <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" style="margin-right: 5px;" href="<?php echo url('/document/send/print') ?>?id={{$header->id}}" target="_blank">Print</a>
+            @can('review-document-send')
+            <button type="button" class="btn btn-success pull-right btn-flat btn-sm" style="margin-right: 5px;" onclick="$('#accept_review_modal').modal();">Terima</button>
+            <button type="button" class="btn btn-danger pull-right btn-flat btn-sm" style="margin-right: 5px;" onclick="$('#reject_review_modal').modal();">Tolak</button>
+            @endcan
         </div>
     </div>
     <!-- /.box -->
 </div>
 <!-- /.col -->
+
+<!-- Accept Review Document Modal -->
+<div class="modal" tabindex="-1" id="accept_review_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Review Document</h4>
+      </div>
+      <div class="modal-body">
+        <label for="note">Berikan catatan mengapa anda menerima dokumen.</label>
+        <input type="email" class="form-control" id="accept_note" placeholder="Masukkan alasan anda">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat btn-sm" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-success btn-flat btn-sm" data-dismiss="modal" onclick="accept()">Terima</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Reject Review Document Modal -->
+<div class="modal" tabindex="-1" id="reject_review_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Review Document</h4>
+      </div>
+      <div class="modal-body">
+        <label for="note">Berikan catatan mengapa anda menolak dokumen.</label>
+        <input type="email" class="form-control" id="reject_note" placeholder="Masukkan alasan anda">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-flat btn-sm" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger btn-flat btn-sm" data-dismiss="modal" onclick="reject()">Tolak</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 @stop
 
 @section('js')
 <script type="text/javascript"> 
 
-    function ubah(param){
-        alert("ubah-"+param);
-    }
-
-    function hapus(param){
-        alert("hapus-"+param);
-    }
-
     $(document).ready(function() {
-        $('#send_detail').DataTable( {
-        });
+    }) 
 
-      console.log('Hi!'); 
-      var _backendData = JSON.parse('{!! json_encode($detail) !!}');
-      console.log(_backendData);
-    } );    
+    function accept(){
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.post( "{{ url('/document/send/accept') }}", 
+        {
+            id: {{$header->id}},
+            note: $("#accept_note").val()
+        },
+        function(data, status){
+            alert(data.payload);    
+            window.location.replace("{{ url('/document/send') }}");
+        }); 
+    }
+
+    function reject(){
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.post( "{{ url('/document/send/reject') }}", 
+        {
+            id: {{$header->id}},
+            note: $("#reject_note").val()
+        },
+        function(data, status){
+            alert(data.payload);    
+            window.location.replace("{{ url('/document/send') }}");
+        });     
+    }
 </script>
 @stop

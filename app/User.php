@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DB;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -27,6 +28,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * Checks if User has access to $permissions.
+     */
+    public function hasAccess(array $permissions) : bool
+    {
+        // check if the permission is available in user's role
+        $roles = Role::where('id', $this->role_id)->firstOrFail();
+            if($roles->hasAccess($permissions)) {
+                return true;
+            }
+        return false;
+    }
 
     public static function get_user_data(){
         $user_data = DB::table('users')

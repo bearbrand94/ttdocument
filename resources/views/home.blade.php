@@ -7,5 +7,6 @@
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <p>Selamat Datang, <b>{{Auth::User()->name}}</b></p><br>
+    <p>Anda Masuk Dengan Hak Akses Sebagai, <b>{{Auth::User()->role_id}}</b></p><br>
 @stop

@@ -25,9 +25,23 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
-        Gate::define('update-post', function ($user, $post) {
-            return $user->id == $post->user_id;
+        Gate::define('review-document-send', function ($user) {
+            return $user->hasAccess(['review-document-send']);
+        });
+        Gate::define('review-document-receive', function ($user) {
+            return $user->hasAccess(['review-document-receive']);
+        });
+        Gate::define('manage-document-send', function ($user) {
+            return $user->hasAccess(['manage-document-send']);
+        });
+        Gate::define('manage-document-receive', function ($user) {
+            return $user->hasAccess(['manage-document-receive']);
+        });
+        Gate::define('manage-user', function ($user) {
+            return $user->hasAccess(['manage-user']);
+        });
+        Gate::define('manage-client', function ($user) {
+            return $user->hasAccess(['manage-client']);
         });
     }
 }

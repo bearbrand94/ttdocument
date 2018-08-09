@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class Document_Send extends Model
 {
@@ -31,6 +32,13 @@ class Document_Send extends Model
 		->join('users as user2', 'user2.id', '=', 'ds.submitted_to')
 		->join('clients', 'clients.id', '=', 'ds.send_to')
 		->select('ds.id', 'ds.created_at', 'ds.letter_number', 'user1.name as requested_by', 'user2.name as submitted_to', 'clients.name as send_to', 'clients.address as send_to_address', 'clients.phone as send_to_phone', 'clients.email as send_to_email', 'ds.approval_status', 'ds.note');
+
+        if(Auth::User()->role_id == 3){
+            $documents_send_header->where('ds.requested_by', Auth::id());
+        }
+        if(Auth::User()->role_id == 4){
+            $documents_send_header->where('ds.submitted_to', Auth::id());
+        }
 		return $documents_send_header;
     }
 

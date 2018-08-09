@@ -27,13 +27,24 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('document/send/new', 'DocumentSendController@new_form');
 	Route::post('document/send/insert', 'DocumentSendController@store');
 
+    Route::post('/document/send/accept', 'DocumentSendController@accept')
+        ->middleware('can:review-document-send');
+    Route::post('/document/send/reject', 'DocumentSendController@reject')
+        ->middleware('can:review-document-send');
+
+
 	Route::get('document/receive', 'DocumentReceiveController@index');
 	Route::get('document/receive/list', 'DocumentReceiveController@get_list');
 	Route::get('document/receive/detail', 'DocumentReceiveController@get_detail');
 	Route::get('document/receive/print', 'DocumentReceiveController@print_detail');
 	Route::get('document/receive/new', 'DocumentReceiveController@new_form');
 	Route::post('document/receive/insert', 'DocumentReceiveController@store');
-	
+
+	Route::post('/document/receive/accept', 'DocumentReceiveController@accept')
+        ->middleware('can:review-document-receive');
+    Route::post('/document/receive/reject', 'DocumentReceiveController@reject')
+        ->middleware('can:review-document-receive');
+
 	Route::get('user', 'UserController@index');
 	Route::get('user/list', 'UserController@get_list');
 
@@ -43,4 +54,6 @@ Route::group(['middleware' => 'web'], function () {
 	Route::post('client/insert', 'ClientController@store');
 	Route::get('client/update', 'ClientController@update_form');
 	Route::post('client/update', 'ClientController@update');
+
+
 });

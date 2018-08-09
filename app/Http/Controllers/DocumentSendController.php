@@ -18,6 +18,22 @@ class DocumentSendController extends Controller
         return view('DocumentSendList');
     }
 
+    public function accept(Request $request){
+        $obj = Document_Send::findOrFail($request->id);
+        $data['approval_status'] = 1;
+        $data['note'] = $request->note;
+        $obj->update($data);
+        return $this->createSuccessMessage("Pengajuan Berhasil Diterima.");
+    }
+    
+    public function reject(Request $request){
+        $obj = Document_Send::findOrFail($request->id);
+        $data['approval_status'] = 2;
+        $data['note'] = $request->note;
+        $obj->update($data);
+        return $this->createSuccessMessage("Pengajuan Berhasil Ditolak.");
+    }
+
     public function new_form(){
         return view('DocumentSendCreate',
             [

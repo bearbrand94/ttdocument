@@ -18,6 +18,22 @@ class DocumentReceiveController extends Controller
         return view('DocumentReceiveList');
     }
 
+    public function accept(Request $request){
+        $obj = Document_Receive::findOrFail($request->id);
+        $data['review_status'] = 1;
+        $data['note'] = $request->note;
+        $obj->update($data);
+        return $this->createSuccessMessage("Pengajuan Berhasil Diterima.");
+    }
+    
+    public function reject(Request $request){
+        $obj = Document_Receive::findOrFail($request->id);
+        $data['review_status'] = 2;
+        $data['note'] = $request->note;
+        $obj->update($data);
+        return $this->createSuccessMessage("Pengajuan Berhasil Ditolak.");
+    }
+
     public function new_form(){
         return view('DocumentReceiveCreate',
             [
