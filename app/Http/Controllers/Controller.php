@@ -17,4 +17,11 @@ class Controller extends BaseController
 					];
 		return response()->json($result);
 	}
+	public function createErrorMessage($payload, $message=null, $code=500){
+		$result = [ "payload"=>$payload,
+				    "error_msg"=>$message,
+					"code"=>$code
+					];
+		return response()->json($result);
+	}
 }

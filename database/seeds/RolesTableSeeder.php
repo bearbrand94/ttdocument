@@ -19,8 +19,13 @@ class RolesTableSeeder extends Seeder
                 'review-document-receive' => true,
                 'manage-document-send' => true,
                 'manage-document-receive' => true,
+                'create-document-send' => true,
+                'create-document-receive' => true,
                 'manage-user' => true,
                 'manage-client' => true,
+                'manage-supervisor-staff-relation' => true,
+                'manage-staff-client-relation' => true,
+                'manage-my-account' => true,
             ]
         ]);
         App\Role::create([
@@ -31,6 +36,8 @@ class RolesTableSeeder extends Seeder
                 'manage-document-send' => true,
                 'manage-document-receive' => true,
                 'manage-client' => true,
+                'manage-staff-client-relation' => true,
+                'manage-my-account' => true,
             ]
         ]);
         App\Role::create([
@@ -39,7 +46,9 @@ class RolesTableSeeder extends Seeder
                 'review-document-receive' => true,
                 'manage-document-send' => true,
                 'manage-document-receive' => true,
+                'create-document-send' => true,
                 'manage-client' => true,
+                'manage-my-account' => true,
             ]
         ]);
         App\Role::create([
@@ -47,8 +56,16 @@ class RolesTableSeeder extends Seeder
             'permissions' => [
                 'manage-document-send' => true,
                 'manage-document-receive' => true,
+                'create-document-receive' => true,
                 'manage-client' => true,
+                'manage-my-account' => true,
             ]
-        ]);      
+        ]);    
+        App\Role::create([
+            'name' => 'Guest',
+            'permissions' => [
+                'manage-my-account' => true,
+            ]
+        ]);  
     }
 }

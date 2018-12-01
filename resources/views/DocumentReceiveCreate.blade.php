@@ -70,7 +70,7 @@
                 </thead>
                 <tbody id="tb_detail_document">
                     <tr>
-                        <td colspan="3">Belum Terdapat Detail Dokumen Yang Diterima, Tambahkan Detail Baru..</td>
+                        <td colspan="3">Belum terdapat detail dokumen yang diterima.</td>
                     </tr>
                 </tbody>
             </table>

@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
         }
 
         // And now let's generate a few users with role number 3
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             User::create([
                 'email' => $faker->email,
                 'name' => $faker->name,
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
         }
 
         // And now let's generate a few users with role number 4
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             User::create([
                 'email' => $faker->email,
                 'name' => $faker->name,

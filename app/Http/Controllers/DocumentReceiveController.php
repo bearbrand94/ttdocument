@@ -19,18 +19,12 @@ class DocumentReceiveController extends Controller
     }
 
     public function accept(Request $request){
-        $obj = Document_Receive::findOrFail($request->id);
-        $data['review_status'] = 1;
-        $data['note'] = $request->note;
-        $obj->update($data);
+        $obj = Document_Receive::accept($request->id, $request->note);
         return $this->createSuccessMessage("Pengajuan Berhasil Diterima.");
     }
     
     public function reject(Request $request){
-        $obj = Document_Receive::findOrFail($request->id);
-        $data['review_status'] = 2;
-        $data['note'] = $request->note;
-        $obj->update($data);
+        $obj = Document_Receive::reject($request->id, $request->note);
         return $this->createSuccessMessage("Pengajuan Berhasil Ditolak.");
     }
 
@@ -79,7 +73,10 @@ class DocumentReceiveController extends Controller
     public function get_detail(Request $request){
         $header_id = $request->id; 
         $documents_receive = Document_Receive::get_detail($header_id);
-
+        if($documents_receive==null){
+            return "null";
+        }
+        
         // return $documents_send;
 
         return view('DocumentReceiveDetail', 

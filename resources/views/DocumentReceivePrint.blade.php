@@ -12,7 +12,8 @@
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
-          <i class="fa fa-globe"></i> H.R. CONSULTING
+          <img src="{{asset('public/img/full_logo.jpg')}}" style="width:400px; height: 100px;">
+          <!-- <i class="fa fa-globe"></i> H.R. CONSULTING -->
           <small class="pull-right">Tanggal Cetak: {{date('d M Y', strtotime(now()))}}</small>
         </h2>
       </div>

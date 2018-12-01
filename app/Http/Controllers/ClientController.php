@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use DB;
 Use App\Client;
+use Validator;
 
 class ClientController extends Controller
 {

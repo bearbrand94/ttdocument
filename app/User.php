@@ -49,4 +49,16 @@ class User extends Authenticatable
         ->select('users.id', 'users.name', 'users.email', 'roles.id as role_id', 'roles.name as role');
         return $user_data;
     }
+
+    public static function get_password($user_id){
+        $user_data = DB::table('users')
+        ->select('users.password')
+        ->where('users.id', $user_id)->get();
+        return $user_data[0]->password;
+    }
+
+    public static function get_user_detail($user_id){
+        $user_data = User::get_user_data()->where('users.id', $user_id)->get()[0];
+        return $user_data;
+    }
 }

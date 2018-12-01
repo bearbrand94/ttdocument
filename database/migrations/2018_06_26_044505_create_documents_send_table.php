@@ -20,7 +20,7 @@ class CreateDocumentsSendTable extends Migration
             $table->integer('send_to');
             $table->string('letter_number');
             $table->string('approval_status');
-            $table->string('note')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

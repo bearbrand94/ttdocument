@@ -8,5 +8,5 @@
 
 @section('content')
     <p>Selamat Datang, <b>{{Auth::User()->name}}</b></p><br>
-    <p>Anda Masuk Dengan Hak Akses Sebagai, <b>{{Auth::User()->role_id}}</b></p><br>
+    <p>Anda Masuk Dengan Hak Akses Sebagai, <b>{{$role->name}}</b></p><br>
 @stop

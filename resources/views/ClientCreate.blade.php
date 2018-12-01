@@ -116,7 +116,7 @@
             },
             function(data, status){
                 alert(data.payload);    
-                window.location.replace("{{ url('/client') }}");
+                window.location.replace("{{ url('/client/manage') }}");
             });         
         }
 

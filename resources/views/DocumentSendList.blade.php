@@ -36,7 +36,9 @@
         <!-- /.box-body -->
         
         <div class="box-footer">
+            @can('create-document-send')
             <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" href="{{ url('/document/send/new') }}">Buat Pengajuan Baru</a>
+            @endcan
         </div>
         <!-- /.box-footer -->
     </div>
@@ -89,8 +91,8 @@
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
                         button_code += '    <li><a href="<?php echo url('/document/send/detail?id=')?>' + data + '">Detail</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/send/update?id=')?>' + data + '">Update</a></li>';
-                        button_code += '    <li><a href="<?php echo url('/document/send/delete?id=')?>' + data + '">Delete</a></li>';
+                        <!--button_code += '    <li><a href="<?php echo url('/document/send/update?id=')?>' + data + '">Update</a></li>';-->
+                        <!--button_code += '    <li><a href="<?php echo url('/document/send/delete?id=')?>' + data + '">Delete</a></li>';-->
                         button_code += '</ul></div>';
                         return button_code;
                     },

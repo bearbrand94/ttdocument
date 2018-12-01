@@ -36,7 +36,7 @@ class Document_Send extends Model
         if(Auth::User()->role_id == 3){
             $documents_send_header->where('ds.requested_by', Auth::id());
         }
-        if(Auth::User()->role_id == 4){
+        if(Auth::User()->role_id == 2){
             $documents_send_header->where('ds.submitted_to', Auth::id());
         }
 		return $documents_send_header;

@@ -22,7 +22,7 @@
         <div class="box-body">
             <!-- /.box-header -->
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0" id="t_doc_receive">
+                <table class="table table-bordered" width="100%" cellspacing="0" id="user_table">
                     <thead id="th_item">
                         <th>UID#</th>
                         <th>Nama User</th>
@@ -45,7 +45,7 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#t_doc_receive').DataTable({
+        $('#user_table').DataTable({
             "processing": false,
             "serverSide": false,
             "ajax": {
@@ -66,7 +66,7 @@
                         button_code = '<div class="btn-group" role="group">';
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
-                        // button_code += '    <li><a href="<?php echo url('/document/receive/detail'); ?>">Detail_' + data + '</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/user/access/change?user_id='); ?>' + data + '">Ganti Hak Akses' + "" + '</a></li>';
                         // button_code += '    <li><a href="<?php echo url('/document/receive/update'); ?>">Update_' + data + '</a></li>';
                         // button_code += '    <li><a href="<?php echo url('/document/receive/delete'); ?>">Delete_' + data + '</a></li>';
                         button_code += '   </ul>';

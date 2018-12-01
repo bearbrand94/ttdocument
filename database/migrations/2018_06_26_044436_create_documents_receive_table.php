@@ -20,7 +20,7 @@ class CreateDocumentsReceiveTable extends Migration
             $table->integer('receiver2');
             $table->string('letter_number');
             $table->string('review_status');
-            $table->string('note')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

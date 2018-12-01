@@ -16,7 +16,7 @@ class CreateDocumentsReceiveDetailTable extends Migration
         Schema::create('documents_receive_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('document_receive_id');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

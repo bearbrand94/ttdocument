@@ -16,7 +16,7 @@ class CreateDocumentsSendDetailTable extends Migration
         Schema::create('documents_send_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('document_send_id');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }
