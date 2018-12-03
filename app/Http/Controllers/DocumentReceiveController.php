@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Document_Receive;
 use App\Document_Receive_Detail;
+use App\Staff_Relation;
 use Yajra\Datatables\Datatables;
 use App\User;
 use App\Client;
@@ -29,9 +30,13 @@ class DocumentReceiveController extends Controller
     }
 
     public function new_form(){
+        $clients_data = Client::get_client_data()->orderBy("name", "asc")->get();
+        for ($i=0; $i < count($clients_data); $i++) { 
+            $clients_data[$i]->staffs = Staff_Relation::get_staff_handle($clients_data[$i]->id);
+        }
         return view('DocumentReceiveCreate',
             [
-                'clients' => Client::get_client_data()->orderBy("name", "asc")->get(),
+                'clients' => $clients_data,
                 'users' => User::get_user_data()->where("roles.name", "staff")->orderBy("users.name", "asc")->get()
             ]
         );

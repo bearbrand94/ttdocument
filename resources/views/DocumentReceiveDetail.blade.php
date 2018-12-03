@@ -123,7 +123,7 @@
       </div>
       <div class="modal-body">
         <label for="note">Berikan catatan mengapa anda menerima dokumen.</label>
-        <input type="email" class="form-control" id="accept_note" placeholder="Masukkan alasan anda">
+        <input type="email" class="form-control" id="accept_note" placeholder="Masukkan catatan anda">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-flat btn-sm" data-dismiss="modal">Batal</button>

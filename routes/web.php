@@ -84,16 +84,19 @@ Route::group(['middleware' => 'web'], function () {
 	    ->middleware('can:manage-client');
 	Route::get('client/manage', 'ClientController@index')
 	    ->middleware('can:manage-client');
+	Route::get('client/detail', 'ClientController@detail')
+	    ->middleware('can:manage-client');
 	Route::get('client/list', 'ClientController@get_list')
 	    ->middleware('can:manage-client');
 	Route::get('client/new', 'ClientController@new_form')
-	    ->middleware('can:manage-client');
+	    ->middleware('can:create-client');
 	Route::post('client/insert', 'ClientController@store')
-	    ->middleware('can:manage-client');
+	    ->middleware('can:create-client');
 	Route::get('client/update', 'ClientController@update_form')
-	    ->middleware('can:manage-client');
+	    ->middleware('can:update-client');
 	Route::post('client/update', 'ClientController@update')
-	    ->middleware('can:manage-client');
+	    ->middleware('can:update-client');
+
 
 	// Relation Manager
 	Route::get('relation/supervisor/manage', 'RelationController@supervisor_form')

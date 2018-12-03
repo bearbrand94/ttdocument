@@ -23,23 +23,22 @@
         <!-- general form elements -->
         <div class="box-body">
             <!-- form start -->
-                <div class="form-group">
-                  <label for="client_name">Nama</label>
-                  <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Masukkan Nama Client">
-                </div>
-                <div class="form-group">
-                  <label for="client_address">Alamat</label>
-                  <input type="text" class="form-control" id="client_address" name="client_address" placeholder="Masukkan Alamat Client">
-                </div>
-                <div class="form-group">
-                  <label for="client_address">No.Telp</label>
-                  <input type="text" class="form-control" id="client_phone" name="client_phone" placeholder="Masukkan Nomor Telepon Client">
-                </div>
-                <div class="form-group">
-                  <label for="client_address">E-Mail</label>
-                  <input type="email" class="form-control" id="client_email" name="client_email" placeholder="Masukkan Alamat E-Mail Client">
-                </div>                
-            
+            <div class="form-group">
+              <label for="client_name">Nama</label>
+              <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Masukkan Nama Client">
+            </div>
+            <div class="form-group">
+              <label for="client_address">Alamat</label>
+              <input type="text" class="form-control" id="client_address" name="client_address" placeholder="Masukkan Alamat Client">
+            </div>
+            <div class="form-group">
+              <label for="client_address">No.Telp</label>
+              <input type="text" class="form-control" id="client_phone" name="client_phone" placeholder="Masukkan Nomor Telepon Client">
+            </div>
+            <div class="form-group">
+              <label for="client_address">E-Mail</label>
+              <input type="email" class="form-control" id="client_email" name="client_email" placeholder="Masukkan Alamat E-Mail Client">
+            </div>                
         </div>
         <!-- /.box-body -->
 

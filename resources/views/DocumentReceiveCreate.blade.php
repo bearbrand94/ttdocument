@@ -36,9 +36,6 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Diserahkan Kepada Staff:</label>
                   <select class="form-control" id="select_staff">
-                    @foreach($users as $user)
-                        <option value="{{$user->id}}">{{$user->name}}</option>
-                    @endforeach
                   </select>
                   <!-- <p class="help-block">Example block-level help text here.</p> -->
                 </div>
@@ -173,7 +170,27 @@
 
 @section('js')
 <script type="text/javascript">
+    $("#select_client").change(function() {    
+        var select_options = "";
+        @foreach($clients as $client)
+          if(this.value == {{$client->id}}){
+              @foreach($client->staffs as $staff)
+                select_options += "<option value={{$staff->id}}>{{$staff->name}}</option>";
+              @endforeach
+          }
+        @endforeach 
+        $("#select_staff").html(select_options);
+        if($("#select_staff").html() == ""){
+          $("#select_staff").html("<option>Tidak ada staff yang dapat menangani client ini.</option>");
+        }
+    });
+
+    $(document).ready(function(){
+      $("#select_client").change();
+    });
+
     var arrDocument=[];
+
     function add_document(){
         arrDocument.push($("#document_description").val());
         fill_detail_table();

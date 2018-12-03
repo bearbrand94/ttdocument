@@ -23,6 +23,8 @@ class RolesTableSeeder extends Seeder
                 'create-document-receive' => true,
                 'manage-user' => true,
                 'manage-client' => true,
+                'create-client' => true,
+                'update-client' => true,
                 'manage-supervisor-staff-relation' => true,
                 'manage-staff-client-relation' => true,
                 'manage-my-account' => true,
@@ -36,6 +38,8 @@ class RolesTableSeeder extends Seeder
                 'manage-document-send' => true,
                 'manage-document-receive' => true,
                 'manage-client' => true,
+                'create-client' => true,
+                'update-client' => true,
                 'manage-staff-client-relation' => true,
                 'manage-my-account' => true,
             ]
@@ -58,6 +62,7 @@ class RolesTableSeeder extends Seeder
                 'manage-document-receive' => true,
                 'create-document-receive' => true,
                 'manage-client' => true,
+                'create-client' => true,
                 'manage-my-account' => true,
             ]
         ]);    

@@ -35,7 +35,9 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
+            @can('create-client')
             <a type="button" class="btn btn-primary pull-right btn-flat btn-sm" href="{{ url('/client/new') }}">Add New Client</a>
+            @endcan
         </div>
         <!-- /.box-footer -->
 	</div>
@@ -66,8 +68,10 @@
                         button_code = '<div class="btn-group" role="group">';
                         button_code += '<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi <span class="caret"></span></button>';
                         button_code += '<ul class="dropdown-menu dropdown-menu-right">';
-                        // button_code += '    <li><a href="<?php echo url('/client/detail?id=')?>' + data + '">Detail</a></li>';
+                        button_code += '    <li><a href="<?php echo url('/client/detail?id=')?>' + data + '">Detail</a></li>';
+                        @can('update-client')
                         button_code += '    <li><a href="<?php echo url('/client/update?id=')?>' + data + '">Update</a></li>';
+                        @endcan
                         // button_code += '    <li><a href="<?php echo url('/client/delete?id=')?>' + data + '">Delete</a></li>';
                         button_code += '   </ul>';
                         button_code += '</div>';

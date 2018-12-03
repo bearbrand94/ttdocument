@@ -49,6 +49,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-client', function ($user) {
             return $user->hasAccess(['manage-client']);
         });
+        Gate::define('create-client', function ($user) {
+            return $user->hasAccess(['create-client']);
+        });
+        Gate::define('update-client', function ($user) {
+            return $user->hasAccess(['update-client']);
+        });
+
         Gate::define('manage-my-account', function ($user) {
             return $user->hasAccess(['manage-my-account']);
         });

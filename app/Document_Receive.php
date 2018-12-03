@@ -72,7 +72,7 @@ class Document_Receive extends Model
 
     }
 
-    public function accept($id, $note){
+    public static function accept($id, $note){
         $obj = Document_Receive::findOrFail($id);
         $data['review_status'] = 1;
         $data['note'] = $note;
@@ -80,7 +80,7 @@ class Document_Receive extends Model
         return $obj;
     }
     
-    public function reject($id, $note){
+    public static function reject($id, $note){
         $obj = Document_Receive::findOrFail($id);
         $data['review_status'] = 2;
         $data['note'] = $note;
